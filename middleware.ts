@@ -1,6 +1,14 @@
+import { URL } from 'url';
 let locales = ["id", "en"];
-
-export function middleware(request) {
+interface RequestType {
+  url: string | URL | undefined;
+  nextUrl: {
+    pathname: string;
+    // Add other properties here if needed
+  };
+  // Add other properties here if needed
+}
+export function middleware(request: RequestType) {
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
   const pathnameHasLocale = locales.some(
@@ -14,7 +22,7 @@ export function middleware(request) {
   request.nextUrl.pathname = `/${locale}${pathname}`;
   // e.g. if the incoming request is /products
   // the new URL iwill be /en/products
-  return Response.redirect(request.nextUrl);
+  return Response.redirect(new globalThis.URL(request.nextUrl.pathname, request.url))
 }
 
 export const config = {

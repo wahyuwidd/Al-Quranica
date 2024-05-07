@@ -7,9 +7,11 @@ import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import meta  from '@/metadata.json'
 
-const Page = ({ params }: { params: { doaspesifik: string[] } }) => {
+const Page = ({ params }: { params: { doaspesifik: string } }) => {
     const param = useParams();
     const titleDoa = params.doaspesifik.toString();
+    console.log(titleDoa);
+    
     const Lang = param.lang.toString();
     const [dataDoa, SetdataDoa] = useState<DoaType[]>([]);
     const [title, setTitle] = useState(`Kumpulan doa ${titleDoa.replace(/-/g, ' ')} Arab, Latin, beserta Terjemahan | ${meta.name}`);
@@ -23,7 +25,7 @@ const Page = ({ params }: { params: { doaspesifik: string[] } }) => {
             .catch(err => console.log(err))
         }
         fetchData()
-    }, [])
+    }, [titleDoa])
 
     return(
     <>
