@@ -4,12 +4,12 @@ export const getAllSurah = async () => {
     try {
         const fetchSurah = await fetch('https://api.quran.gading.dev/surah');
         if (!fetchSurah.ok) {
-            return notFound()
+            return notFound();
         }
         const data = await fetchSurah.json();
-        return data.data
+        return data.data;
     } catch (error) {
-        throw error
+        throw error;
     }
 }
 
@@ -18,7 +18,7 @@ export const getSurahById = async (id: string) => {
         try {
             const fetchSurah = await fetch(`https://api.quran.gading.dev/surah/${id}`);
             if (!fetchSurah.ok) {
-                return notFound()
+                return notFound();
             }
             const data = await fetchSurah.json();
             return data.data;
@@ -27,7 +27,6 @@ export const getSurahById = async (id: string) => {
             throw error; 
         }
     } else {
-        return notFound()
+        return notFound();
     }
-    
 }

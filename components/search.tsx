@@ -19,10 +19,10 @@ import { SurahItem } from "@/types/surah-type"
 import { useParams } from "next/navigation"
 
 export const SearchToggle = () => {
-    const param = useParams();
-    const CurrentLang = param.lang.toString();
-    const [open, setOpen] = useState(false)
-    const [surah, setSurah] = useState<SurahItem[]>([]);
+  const param = useParams();
+  const CurrentLang = param.lang ? param.lang.toString() : '';
+  const [open, setOpen] = useState(false);
+  const [surah, setSurah] = useState<SurahItem[]>([]);
   
     useEffect(() => {
     fetch("https://api.quran.gading.dev/surah")

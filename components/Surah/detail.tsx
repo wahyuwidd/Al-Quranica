@@ -77,7 +77,7 @@ export const  SurahDetail = async ({ surahId, CurrentLang } : { surahId: number,
                 <div className="flex justify-center items-center space-x-2 mt-2">
                     <div className="w-auto">
                     <div className="relative mt-1">
-                    41
+                        <ItemList data={data} currentIndex={currentIndex} surahData={surahData} surahId={surahId} CurrentLang={CurrentLang}/>
                     </div>
                     </div>
                     <div className="w-auto">

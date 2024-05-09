@@ -13,10 +13,10 @@ import { useEffect, useState } from 'react';
 import ThemeSwitcherSidebar from './theme-switcher-sidebar';
 
 export const Navbar = () => {
-  const param = useParams();
-  const CurrentLang = param.lang.toString();
-  const asPath = usePathname().split('/');;
-  const CurrentUrl = asPath[2] + '/' + asPath[3]
+  const { lang } = useParams();
+  const CurrentLang = lang ? lang.toString() : '';
+  const asPath = usePathname().split('/');
+  const CurrentUrl = asPath[2] + '/' + asPath[3];
 
   //sidebar
   const [isOpen, setIsOpen] = useState(false);
